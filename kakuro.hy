@@ -1,38 +1,29 @@
 
 (defclass Empty []
-  []
   (defn draw [this] "   -----  "))
 
 (defclass Down [] 
-  [[--init--
-  (fn [self x]
-    (setv self.down x)
-    None)]]
+  (defn --init-- [self x]
+    (setv self.down x))
 
   (defn draw [this] (format "   %2d\\--  " (.down this))))
 
 (defclass Across []
-  [[--init--
-  (fn [self x]
-    (setv self.across x)
-    None)]]
+  (defn --init-- [self x]
+    (setv self.across x))
 
   (defn draw [this] (format "   --\\%2d  " (:across this))))
 
 (defclass DownAcross []
-  [[--init--
-  (fn [self x y]
-    (setv self.down x)
-    (setv self.across y)
-    None)]]
+ (defn --init [self x y]
+  (setv self.down x)
+  (setv self.across y))
 
   (defn draw [this] (format "   %2d\\%2d  " (:down this) (:across this))))
 
 (defclass Value []
-  [[--init--
-  (fn [self x]
-   (setv self.values x)
-   None)]]
+ (defn --init-- [self x]
+  (setv self.values x))
 
   (defn draw [this]
     (let [values (.values this)]
